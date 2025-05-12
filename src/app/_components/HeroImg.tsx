@@ -1,0 +1,23 @@
+import Image from "next/image";
+import placeholder from "@/assets/images/placeholder.webp";
+import HomeMenu from "./HomeMenu";
+import HeroText from "./HeroText";
+
+const HeroImg = () => {
+  return (
+    <div className="hero-img w-full h-full absolute inset-0 flex flex-col justify-center items-center overflow-hidden">
+      <HomeMenu />
+      <HeroText />
+      <Image
+        src={placeholder}
+        alt="tuts"
+        width={1900}
+        height={1900}
+        className="w-full h-full object-cover absolute inset-0"
+        priority
+      />
+    </div>
+  );
+};
+
+export default HeroImg;

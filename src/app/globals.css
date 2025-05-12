@@ -1,26 +1,53 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+body {
+  --font-inter: var(--inter);
+  --font-oswald: var(--oswald);
+  --font-antonio: var(--antonio);
+  --font-geist: var(--geist);
+  --font-geist-mono: var(--geist-mono);
+  --color-blue: rgb(29, 155, 240);
+
+  --font-body: var(--font-inter), var(--font-oswald), var(--font-antonio);
+  background-color: var(--color-blue);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+nextjs-portal {
+  display: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.home {
+  background-image: url(./../assets/images/placeholder.webp);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hero-img {
+  animation: homeIntro 1s ease forwards;
+}
+
+@keyframes homeIntro {
+  from {
+    transform: scale(100%);
+  }
+
+  to {
+    transform: scale(90%);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.hero-img img {
+  animation: introImg 1s ease forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes introImg {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.2);
+  }
 }
