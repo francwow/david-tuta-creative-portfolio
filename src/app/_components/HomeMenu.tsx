@@ -8,36 +8,36 @@ const HomeMenu = () => {
 
   const menuItems = [
     {
-      textES: "Acerca",
-      textEN: "About",
+      textES: "ACERCA.",
+      textEN: "ABOUT.",
       href: "/about",
       position: "top-[4vw] left-[4vw]",
     },
     {
-      textES: "Fotografía",
-      textEN: "Photography",
+      textES: "FOTOGRAFÍA.",
+      textEN: "PHOTOGRAPHY.",
       href: "/photography",
       position: "top-[4vw] right-[4vw]",
     },
     {
-      textES: "Diseño",
-      textEN: "Design",
+      textES: "DISEÑO.",
+      textEN: "DESIGN.",
       href: "/design",
       position: "bottom-[4vw] left-[4vw]",
     },
     {
-      textES: "Contacto",
-      textEN: "Contact",
+      textES: "CONTACTO.",
+      textEN: "CONTACT.",
       href: "/contact",
       position: "bottom-[4vw] right-[4vw]",
     },
   ];
 
   return (
-    <div className="w-full h-full absolute inset-0 z-10">
+    <div className="absolute bottom-0 right-0 left-0 z-10 w-full flex justify-between items-start flex-row">
       {menuItems.map((item, index) => (
         <Link
-          className={`absolute text-white font-(family-name:--font-geist) text-[1.2rem] px-3 py-2 font-bold bg-sky-500/80 -tracking-normal ${item.position}`}
+          className={`text-gray-200 lg:hover:text-yellow-500 font-(family-name:--font-geist) lg:text-2xl text-[0.8rem] text-center p-2.5 font-bold w-full -tracking-normal ${item.position}`}
           href={item.href}
           key={index}
         >

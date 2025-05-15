@@ -1,6 +1,6 @@
 "use client";
 
-import { PropsWithChildren, useState } from "react";
+import { PropsWithChildren, useEffect, useState } from "react";
 import {
   LanguageContext,
   MouseClickContext,
@@ -19,6 +19,13 @@ const Provider = (props: PropsWithChildren) => {
   const [pointerIn, setPointerIn] = useState<PointerIn>(false);
   const [language, setLanguage] = useState<LanguageType>("ES");
   const [mouseClick, setMouseClick] = useState<MouseClick>(false);
+
+  useEffect(() => {
+    console.log(
+      "%c Developed by Francisco Osorio Silva - https://francwow.com/",
+      "background: #000; color: #fff;"
+    );
+  }, []);
 
   return (
     <MouseClickContext.Provider value={{ mouseClick, setMouseClick }}>

@@ -15,6 +15,7 @@ const HeroImg = () => {
         height={1900}
         className="w-full h-full object-cover absolute inset-0"
         priority
+        quality={75}
       />
     </div>
   );
