@@ -1,13 +1,18 @@
-// import homeImg from "@/assets/images/tut-desktop-webp.webp";
-
 import HeroImg from "./_components/HeroImg";
+import HomeBG from "./_components/HomeBG";
 
-export default function Home() {
+export default async function Home() {
+  await new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("delay");
+    }, 2000);
+  });
+
   return (
-    <div className="home w-screen h-screen absolute inset-0 overflow-hidden font-(family-name:--font-geist)">
-      <div className="home-overlay absolute inset-0 bg-sky-800/80">
-        <HeroImg />
-      </div>
+    <div className="home w-screen h-screen absolute inset-0 overflow-hidden">
+      <HomeBG />
+      <div className="home-overlay absolute inset-0 bg-sky-800/80"></div>
+      <HeroImg />
     </div>
   );
 }

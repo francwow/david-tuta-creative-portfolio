@@ -2,6 +2,7 @@ import Image from "next/image";
 import placeholder from "@/assets/images/placeholder.webp";
 import HomeMenu from "./HomeMenu";
 import HeroText from "./HeroText";
+import Languages from "./Languages";
 
 const HeroImg = () => {
   return (
@@ -17,6 +18,9 @@ const HeroImg = () => {
         priority
         quality={75}
       />
+      <div className="absolute top-0 left-0 right-0 w-full">
+        <Languages />
+      </div>
     </div>
   );
 };

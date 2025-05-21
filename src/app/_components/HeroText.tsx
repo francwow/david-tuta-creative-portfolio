@@ -7,7 +7,7 @@ const HeroText = () => {
 
   return (
     <div className="z-50 text-white tracking-[0.4rem] p-0">
-      <div className="text-5xl lg:text-8xl font-extrabold text-center">
+      <div className="text-5xl lg:text-8xl font-extrabold text-center font-(family-name:--font-geist)">
         DAVID TUTA
       </div>
       <div className="text-2xl lg:text-5xl font-extrabold text-center font-(family-name:--font-inter)">

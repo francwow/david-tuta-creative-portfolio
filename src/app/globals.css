@@ -16,13 +16,14 @@ nextjs-portal {
   display: none;
 }
 
-.home {
+/* .home {
   background-image: url(./../assets/images/placeholder.webp);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
+} */
 
+/* Home */
 .hero-img {
   animation: homeIntro 1s ease forwards;
 }
@@ -51,3 +52,22 @@ nextjs-portal {
     transform: scale(1.2);
   }
 }
+
+/* HomeMenu */
+.menu-item {
+  transform: translate3d(0, 400%, 0);
+  transition: 0.5s ease transform;
+  animation: menu-item ease 0.5s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes menu-item {
+  from {
+    transform: translate3d(0, 400%, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Languages */
