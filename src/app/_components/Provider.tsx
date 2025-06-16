@@ -10,12 +10,12 @@ import {
 import {
   LanguageType,
   MouseClick,
-  NavIndexType,
+  NavType,
   PointerIn,
 } from "../../types/Types";
 
 const Provider = (props: PropsWithChildren) => {
-  const [index, setIndex] = useState<NavIndexType>(0);
+  const [navActive, setNavActive] = useState<NavType>(false);
   const [pointerIn, setPointerIn] = useState<PointerIn>(false);
   const [language, setLanguage] = useState<LanguageType>("ES");
   const [mouseClick, setMouseClick] = useState<MouseClick>(false);
@@ -29,7 +29,7 @@ const Provider = (props: PropsWithChildren) => {
 
   return (
     <MouseClickContext.Provider value={{ mouseClick, setMouseClick }}>
-      <NavContext.Provider value={{ index, setIndex }}>
+      <NavContext.Provider value={{ navActive, setNavActive }}>
         <LanguageContext.Provider value={{ language, setLanguage }}>
           <PointerContext.Provider value={{ pointerIn, setPointerIn }}>
             {props.children}

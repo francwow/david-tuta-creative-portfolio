@@ -3,6 +3,10 @@ import { Antonio, Geist, Geist_Mono, Inter, Oswald } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import Provider from "./_components/Provider";
+import HomeImg from "./_components/home/HomeImg";
+import HeroImg from "./_components/home/HeroImg";
+import Header from "./_components/header/Header";
+import Footer from "./_components/footer/Footer";
 
 const inter = Inter({ subsets: ["latin"], variable: "--inter" });
 const oswald = Oswald({ subsets: ["latin"], variable: "--oswald" });
@@ -36,10 +40,18 @@ export default function RootLayout({
     <html className={`${materialSymbols.variable}`} lang="es">
       <Provider>
         <body
-          data-theme="light"
-          className={`${inter.variable} ${oswald.variable} ${antonio.variable} ${geist.variable} ${geistMono.variable}`}
+          className={`${inter.variable} ${oswald.variable} ${antonio.variable} ${geist.variable} ${geistMono.variable}  bg-sky-950`}
         >
+          <div className="block lg:hidden absolute inset-0">
+            <HomeImg device="mobile" />
+          </div>
+          <div className="hidden lg:block absolute inset-0">
+            <HomeImg device="desktop" />
+          </div>
+          <HeroImg />
           {children}
+          <Header />
+          <Footer />
         </body>
       </Provider>
     </html>

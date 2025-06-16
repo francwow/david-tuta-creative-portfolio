@@ -1,4 +1,4 @@
-export type NavIndexType = number;
+export type NavType = boolean;
 
 export type PointerIn = boolean;
 
@@ -7,8 +7,8 @@ export type MouseClick = boolean;
 export type LanguageType = "ES" | "EN";
 
 export type NavContextType = {
-  index: NavIndexType;
-  setIndex: (index: number) => void;
+  navActive: NavType;
+  setNavActive: (navActive: NavType) => void;
 };
 
 export type PointerContextType = {

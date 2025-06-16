@@ -1,18 +1,11 @@
-import HeroImg from "./_components/HeroImg";
-import HomeBG from "./_components/HomeBG";
+import HeroText from "./_components/home/HeroText";
 
-export default async function Home() {
-  await new Promise((resolve) => {
-    setTimeout(() => {
-      resolve("delay");
-    }, 2000);
-  });
-
+export default function Home() {
   return (
-    <div className="home w-screen h-screen absolute inset-0 overflow-hidden">
-      <HomeBG />
-      <div className="home-overlay absolute inset-0 bg-sky-800/80"></div>
-      <HeroImg />
+    <div className="home w-full min-h-screen overflow-hidden">
+      <div className="w-full min-h-screen flex justify-center items-center">
+        <HeroText />
+      </div>
     </div>
   );
 }

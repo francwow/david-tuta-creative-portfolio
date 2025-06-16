@@ -15,7 +15,7 @@ export const MouseClickContext = createContext<MouseClickContextType | null>(
   null
 );
 
-export const useNavIndex = (): NavContextType => {
+export const useNav = (): NavContextType => {
   const context = useContext(NavContext);
 
   if (!context) {

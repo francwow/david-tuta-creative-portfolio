@@ -7,25 +7,70 @@ body {
   --font-geist: var(--geist);
   --font-geist-mono: var(--geist-mono);
   --color-blue: rgb(29, 155, 240);
-
+  --color-sky: rgb(5, 47, 74);
+  --header-height: calc(var(--header-h) * 1px);
+  --footer-height: calc(var(--footer-h) * 1px);
   --font-body: var(--font-inter), var(--font-oswald), var(--font-antonio);
-  background-color: var(--color-blue);
+
+  background-color: white;
+  min-height: 100vh;
 }
 
 nextjs-portal {
   display: none;
 }
 
-/* .home {
-  background-image: url(./../assets/images/placeholder.webp);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-} */
+/* Global styles */
+section {
+  margin-top: var(--header-height);
+  margin-bottom: var(--footer-height);
+}
 
-/* Home */
-.hero-img {
-  animation: homeIntro 1s ease forwards;
+/* utility */
+.move-up {
+  position: relative;
+  overflow: hidden;
+  /* transition: 0.5s ease transform; */
+}
+
+.move-up.not-active div {
+  transform: translate3d(0, 100%, 0);
+}
+
+.move-up.active div {
+  animation: move-up ease 0.5s forwards;
+}
+
+.color-overlay {
+  transition: 0.5s ease background-color;
+}
+
+@media screen and (min-width: 991px) {
+  .rotate-item {
+    transition: 0.5s ease;
+  }
+
+  .rotate-item:nth-child(2) {
+    transform: translate3d(0, 70%, 0) rotateX(-90deg);
+  }
+
+  .rotate-parent:hover .rotate-item:first-child {
+    transform: translate3d(0, -70%, 0) rotateX(90deg);
+  }
+
+  .rotate-parent:hover .rotate-item:nth-child(2) {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* keyframes */
+@keyframes move-up {
+  from {
+    transform: translate3d(0, 100%, 0);
+  }
+  to {
+    transform: translate3d(0, 0%, 0);
+  }
 }
 
 @keyframes homeIntro {
@@ -34,13 +79,18 @@ nextjs-portal {
   }
 
   to {
-    transform: scale(90%);
+    transform: scale(95%);
   }
 }
 
-.hero-img img {
-  animation: introImg 1s ease forwards;
-  animation-delay: 0.5s;
+@keyframes pageAnimation {
+  from {
+    transform: scale(95%);
+  }
+
+  to {
+    transform: scale(100%);
+  }
 }
 
 @keyframes introImg {
@@ -53,21 +103,72 @@ nextjs-portal {
   }
 }
 
-/* HomeMenu */
-.menu-item {
-  transform: translate3d(0, 400%, 0);
-  transition: 0.5s ease transform;
-  animation: menu-item ease 0.5s forwards;
-  animation-delay: 1s;
+@keyframes pagesImg {
+  from {
+    transform: scale(1.2);
+  }
+
+  to {
+    transform: scale(1);
+  }
 }
 
-@keyframes menu-item {
-  from {
-    transform: translate3d(0, 400%, 0);
-  }
-  to {
-    transform: translate3d(0, 0, 0);
-  }
+/* Nav */
+.nav-mobile {
+  transition: 0.3s ease transform;
+}
+
+.nav-mobile.not-active {
+  transform: translate3d(0, -100%, 0);
+}
+
+.nav-mobile.active {
+  transform: translate3d(0, 0, 0);
+}
+
+.menu-link div {
+  width: 100%;
+}
+
+/* Header */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+}
+
+/* Footer */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
 }
 
 /* Languages */
+.language-item {
+  font-weight: 200;
+}
+
+.language-item.active {
+  font-weight: 400;
+}
+
+/* Home */
+/* .hero-img {
+  animation: homeIntro 1s ease forwards;
+} */
+
+.hero-img.home-img img {
+  animation: introImg 1s ease forwards;
+  animation-delay: 0.5s;
+}
+
+.hero-img.pages-img .color-overlay {
+  background-color: var(--color-sky);
+}
+
+.hero-img.pages-img img {
+  animation: pagesImg 1s ease forwards;
+}
