@@ -8,7 +8,7 @@ const Languages = () => {
   const { language, setLanguage } = useLanguage();
 
   return (
-    <div className="language-container relative flex flex-row justify-center items-center gap-1.5 font-(family-name:--font-geist) lg:text-[1.2rem] text-[1rem] cursor-pointer text-gray-200 lg:hover:text-yellow-500 w-fit z-[99]">
+    <div className="language-container relative flex flex-row justify-center items-center gap-1.5 lg:text-[1.2rem] text-[1rem] cursor-pointer text-gray-200 lg:hover:text-orange-500 w-fit z-[99]">
       <div
         className={
           language === "ES"

@@ -21,7 +21,7 @@ const HeroImg = () => {
       <div className="hidden lg:block absolute inset-0 overflow-hidden">
         <HomeImg device="desktop" />
       </div>
-      <ColorOverlay bgColor="bg-sky-950/80" />
+      <ColorOverlay bgColor="bg-[rgba(3,20,33,0.8)]" />
     </div>
   );
 };

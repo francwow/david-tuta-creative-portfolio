@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+html,
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   --font-inter: var(--inter);
   --font-oswald: var(--oswald);
@@ -8,37 +15,98 @@ body {
   --font-geist-mono: var(--geist-mono);
   --color-blue: rgb(29, 155, 240);
   --color-sky: rgb(5, 47, 74);
+  --color-deep-blue: rgba(3, 20, 33);
   --header-height: calc(var(--header-h) * 1px);
   --footer-height: calc(var(--footer-h) * 1px);
   --font-body: var(--font-inter), var(--font-oswald), var(--font-antonio);
 
-  background-color: white;
+  background-color: rgba(29, 29, 27);
+  color: rgba(29, 29, 27);
   min-height: 100vh;
+  font-family: var(--font-body);
 }
 
 nextjs-portal {
   display: none;
 }
 
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus management */
+/* *:focus {
+  outline: 2px solid #eab308;
+  outline-offset: 2px;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid #eab308;
+  outline-offset: 2px;
+} */
+
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0.5rem;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
 /* Global styles */
-section {
-  margin-top: var(--header-height);
-  margin-bottom: var(--footer-height);
+.section-container {
+  padding-top: var(--header-height);
+  padding-bottom: var(--footer-height);
 }
 
 /* utility */
 .move-up {
   position: relative;
   overflow: hidden;
-  /* transition: 0.5s ease transform; */
 }
 
-.move-up.not-active div {
+.move-up > * {
+  transition: 0.5s ease transform, 0.3s ease opacity;
+  transition-delay: 0.15s;
+}
+
+.move-up.not-active > * {
   transform: translate3d(0, 100%, 0);
+  opacity: 0;
 }
 
-.move-up.active div {
-  animation: move-up ease 0.5s forwards;
+.move-up.active > * {
+  /* animation: move-up ease 0.5s forwards; */
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
 }
 
 .color-overlay {
@@ -115,15 +183,17 @@ section {
 
 /* Nav */
 .nav-mobile {
-  transition: 0.3s ease transform;
+  transition: 0.3s ease transform, 0s ease opacity;
 }
 
 .nav-mobile.not-active {
   transform: translate3d(0, -100%, 0);
+  opacity: 0;
 }
 
 .nav-mobile.active {
   transform: translate3d(0, 0, 0);
+  opacity: 1;
 }
 
 .menu-link div {
@@ -166,9 +236,20 @@ section {
 }
 
 .hero-img.pages-img .color-overlay {
-  background-color: var(--color-sky);
+  background-color: var(--color-deep-blue);
 }
 
 .hero-img.pages-img img {
   animation: pagesImg 1s ease forwards;
+}
+
+/* About */
+@media screen and (width >= 64rem) {
+  .about-title {
+    height: calc(100vh - calc(var(--header-height) + var(--footer-height)));
+  }
+}
+
+.skills span {
+  display: block;
 }

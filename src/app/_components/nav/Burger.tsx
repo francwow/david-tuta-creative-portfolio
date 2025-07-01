@@ -14,7 +14,7 @@ const Burger = ({ setNavActive, navActive }: BurgerProps) => {
       }}
       role="button"
       tabIndex={0}
-      className="burger p-2 lg:p-5 lg:hidden gap-1.5 flex flex-col justify-center items-center h-full z-[99]"
+      className="burger p-2 lg:p-5 lg:hidden gap-1.5 flex flex-col justify-center items-center h-full z-[99] cursor-pointer"
     >
       <div className="burger-line w-[30px] h-[1px] bg-white"></div>
       <div className="burger-line w-[30px] h-[1px] bg-white"></div>

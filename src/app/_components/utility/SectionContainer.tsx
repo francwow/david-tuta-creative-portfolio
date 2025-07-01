@@ -7,7 +7,7 @@ const SectionContainer = ({ children }: PropsWithChildren) => {
   useLenis();
 
   return (
-    <div className="section-container relative flex flex-col justify-center items-center min-h-screen bg-white text-black">
+    <div className="section-container relative min-h-screen bg-[rgb(1,19,17)] text-gray-200">
       {children}
     </div>
   );

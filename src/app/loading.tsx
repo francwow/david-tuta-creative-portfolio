@@ -14,7 +14,7 @@ export default function Loading() {
         </div>
         <HeroText />
       </div>
-      <ColorOverlay bgColor="bg-sky-950/80" />
+      <ColorOverlay bgColor="bg-[rgba(3,20,33,0.8)]" />
     </>
   );
 }

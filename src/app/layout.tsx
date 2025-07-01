@@ -29,6 +29,34 @@ export const metadata: Metadata = {
   title: "David Tuta",
   description:
     "David Tuta es un creador de experiencias audiovisuales colombiano.",
+  keywords: [
+    "David Tuta",
+    "filmmaker",
+    "audiovisual",
+    "creative",
+    "portfolio",
+    "Colombia",
+    "video production",
+  ],
+  authors: [{ name: "David Tuta" }],
+  creator: "David Tuta",
+  openGraph: {
+    title: "David Tuta - Creative Portfolio",
+    description:
+      "David Tuta es un creador de experiencias audiovisuales colombiano.",
+    type: "website",
+    locale: "es_ES",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "David Tuta - Creative Portfolio",
+    description:
+      "David Tuta es un creador de experiencias audiovisuales colombiano.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -42,6 +70,14 @@ export default function RootLayout({
         <body
           className={`${inter.variable} ${oswald.variable} ${antonio.variable} ${geist.variable} ${geistMono.variable}  bg-sky-950`}
         >
+          {/* Skip to content link for accessibility */}
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-yellow-500 text-sky-950 px-4 py-2 rounded-lg font-semibold z-[9999] focus:outline-none focus:ring-2 focus:ring-yellow-400"
+          >
+            Skip to main content
+          </a>
+
           <div className="block lg:hidden absolute inset-0">
             <HomeImg device="mobile" />
           </div>
@@ -49,9 +85,11 @@ export default function RootLayout({
             <HomeImg device="desktop" />
           </div>
           <HeroImg />
-          {children}
+          <div id="main-content">{children}</div>
           <Header />
-          <Footer />
+          <div className="hidden lg:block">
+            <Footer />
+          </div>
         </body>
       </Provider>
     </html>

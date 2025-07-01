@@ -6,7 +6,7 @@ import Lenis from "lenis";
 export function useLenis() {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 0.8,
       easing: (t: number) => t * (2 - t), // easeOutQuad
       smoothWheel: true,
       lerp: 0.2,

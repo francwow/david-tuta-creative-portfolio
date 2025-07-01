@@ -38,10 +38,14 @@ const HomeMenu = ({ setNavActive }: HomeMenuProps) => {
     <div className="home-menu z-10 lg:w-fit w-full flex justify-between items-start flex-col lg:flex-row">
       {menuItems.map((item, index) => (
         <Link
-          className={`menu-link rotate-parent text-gray-200 lg:hover:text-yellow-500 font-(family-name:--font-geist) lg:text-[1.2rem] text-3xl text-center  font-light lg:font-medium w-full -tracking-normal flex justify-center items-end gap-1.5`}
+          className={`menu-link rotate-parent text-gray-200 lg:hover:text-orange-500 font-(family-name:--font-geist) lg:text-[1.2rem] text-3xl text-center  font-light lg:font-medium w-full -tracking-normal flex justify-center items-end gap-1.5`}
           href={item.href}
           key={index}
-          onClick={() => setNavActive(false)}
+          onClick={() => {
+            setTimeout(() => {
+              setNavActive(false);
+            }, 0);
+          }}
         >
           <MoveUpContainer>
             <RotateContainer

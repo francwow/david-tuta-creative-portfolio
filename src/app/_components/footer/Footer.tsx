@@ -26,13 +26,14 @@ const Footer = () => {
       className={
         pathname === "/"
           ? "footer w-full flex flex-row lg:flex-row justify-between items-end bg-transparent"
-          : "footer w-full flex flex-row lg:flex-row justify-between items-end relative bg-sky-950/95"
+          : "footer w-full flex flex-row lg:flex-row justify-between items-end relative bg-[rgba(3,20,33,0.95)]"
       }
     >
+      {/* Socials */}
       <div className="socials-container flex justify-between lg:justify-center items-start lg:w-fit">
         <div className="socials-item">
           <Link
-            className="rotate-parent text-[1rem] lg:text-[1.2rem] text-gray-200 lg:hover:text-yellow-500"
+            className="rotate-parent text-[1rem] lg:text-[1.2rem] text-gray-200 lg:hover:text-orange-500"
             href={"https://www.instagram.com/"}
             target="_blank"
           >
@@ -47,7 +48,7 @@ const Footer = () => {
         </div>
         <div className="socials-item">
           <Link
-            className="rotate-parent text-[1rem] lg:text-[1.2rem] text-gray-200 lg:hover:text-yellow-500"
+            className="rotate-parent text-[1rem] lg:text-[1.2rem] text-gray-200 lg:hover:text-orange-500"
             href={"https://www.youtube.com/"}
             target="_blank"
           >
@@ -61,8 +62,10 @@ const Footer = () => {
           </Link>
         </div>
       </div>
+
+      {/* Copyright */}
       <MoveUpContainer>
-        <div className="email lg:w-fit text-[0.8rem] lg:text-[1rem] text-yellow-500 p-2 lg:p-5 flex flex-col">
+        <div className="email lg:w-fit text-[0.8rem] lg:text-[1rem] text-orange-500 p-2 lg:p-5 flex flex-col">
           <span className="text-center">Copyright © 2025 dtuta.com</span>
         </div>
       </MoveUpContainer>
