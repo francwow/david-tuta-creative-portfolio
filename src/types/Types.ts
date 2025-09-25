@@ -13,7 +13,6 @@ export type NavContextType = {
 
 export type PointerContextType = {
   pointerIn: PointerIn;
-  // eslint-disable-next-line no-unused-vars
   setPointerIn: (pointerIn: PointerIn) => void;
 };
 

@@ -24,6 +24,13 @@
 }
 
 .pages-navigate svg {
-  width: 3rem;
-  height: 3rem;
+  width: 2rem;
+  height: 2rem;
+}
+
+@media screen and (min-width: 991px) {
+  .pages-navigate svg {
+    width: 3rem;
+    height: 3rem;
+  }
 }
