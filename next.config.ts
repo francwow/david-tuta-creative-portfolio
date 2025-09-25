@@ -15,12 +15,6 @@ const nextConfig: NextConfig = {
   // Compression
   compress: true,
 
-  // Experimental features for performance
-  experimental: {
-    optimizeCss: true,
-    optimizePackageImports: ["material-symbols"],
-  },
-
   // Headers for performance and security
   async headers() {
     return [
