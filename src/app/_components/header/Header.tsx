@@ -1,16 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import Languages from "./Languages";
 import HomeMenu from "../nav/HomeMenu";
 import { usePathname } from "next/navigation";
 import Burger from "../nav/Burger";
-import { useNav } from "@/contexts/ContextHooks";
+import { useLanguage, useNav } from "@/contexts/ContextHooks";
 import { useEffect, useRef } from "react";
 import Footer from "../footer/Footer";
+import Languages from "./Languages";
 
 const Header = () => {
   const pathname = usePathname();
+  const { language } = useLanguage();
   const { navActive, setNavActive } = useNav();
   const headerRef = useRef<HTMLDivElement | null>(null);
 
@@ -20,9 +21,8 @@ const Header = () => {
       const headerHeight = headerRect?.height;
 
       document.body.style.setProperty("--header-h", `${headerHeight}`);
-      console.log(headerHeight);
     }
-  }, []);
+  }, [pathname]);
 
   return (
     <div
@@ -50,13 +50,12 @@ const Header = () => {
                 DAVID TUTA
               </span>
               <span className="text-orange-500 font-light tracking-[0.13rem] lg:tracking-[0.3rem] text-[0.9rem] text-center">
-                portafolio creativo
+                {language === "ES"
+                  ? "portafolio creativo"
+                  : "creative portfolio"}
               </span>
             </div>
             <div className="block lg:hidden">
-              {/* <span className="text-[1.2rem] font-bold tracking-[0.2rem] text-yellow-500">
-                DavidTuta
-              </span> */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"

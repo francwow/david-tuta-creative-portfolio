@@ -3,6 +3,8 @@
 import { useLanguage } from "@/contexts/ContextHooks";
 import MoveUpContainer from "../_components/utility/MoveUpContainer";
 import SectionContainer from "../_components/utility/SectionContainer";
+import ColorOverlay from "../_components/utility/ColorOverlay";
+import Link from "next/link";
 
 const ContactPage = () => {
   const { language } = useLanguage();
@@ -12,369 +14,125 @@ const ContactPage = () => {
     email: "david@davidtuta.com",
     location: "Bogotá, Colombia",
     socials: {
-      instagram: "https://instagram.com/davidtuta",
-      linkedin: "https://linkedin.com/in/davidtuta",
-      behance: "https://behance.net/davidtuta",
-      vimeo: "https://vimeo.com/davidtuta",
+      instagram: "https://instagram.com",
+      linkedin: "https://youtube.com",
+      behance: "https://behance.net",
+      vimeo: "https://vimeo.com",
     },
-  };
-
-  const handleContactClick = (type: string, value: string) => {
-    switch (type) {
-      case "phone":
-        window.open(`tel:${value}`, "_self");
-        break;
-      case "email":
-        window.open(`mailto:${value}`, "_self");
-        break;
-      case "social":
-        window.open(value, "_blank");
-        break;
-    }
-  };
-
-  const handleKeyDown = (
-    e: React.KeyboardEvent,
-    type: string,
-    value: string
-  ) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      handleContactClick(type, value);
-    }
   };
 
   return (
     <SectionContainer>
-      <section className="contact-section w-full flex flex-col justify-center items-center text-center py-20 lg:py-32">
-        <MoveUpContainer>
-          <h1 className="text-[3rem] lg:text-[5rem] font-extrabold mb-6">
-            {language === "ES" ? "CONTACTO" : "CONTACT"}
-          </h1>
-        </MoveUpContainer>
+      <section className="contact-section w-full h-full flex flex-col justify-center items-center relative">
+        {/* Background and Overlay */}
+        <div className="contact-bg absolute inset-0 bg-[url('../assets/images/social-event.webp')] bg-cover bg-center opacity-50"></div>
+        <ColorOverlay bgColor="bg-[rgba(3,20,33,0.65)]" />
 
-        <MoveUpContainer>
-          <p className="text-[1.2rem] lg:text-[1.5rem] font-light max-w-[600px] lg:max-w-[800px] px-4 mb-8">
-            {language === "ES"
-              ? "¿Listo para crear algo increíble juntos? Hablemos sobre tu próximo proyecto."
-              : "Ready to create something amazing together? Let's talk about your next project."}
-          </p>
-        </MoveUpContainer>
-
-        <MoveUpContainer>
-          <button
-            onClick={() => handleContactClick("email", contactInfo.email)}
-            aria-label={
-              language === "ES"
-                ? "Enviar email para iniciar proyecto"
-                : "Send email to start project"
-            }
-            className="bg-yellow-500 text-sky-950 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-sky-950 transition-colors duration-300 transform hover:scale-105"
-          >
-            {language === "ES" ? "Iniciar Proyecto" : "Start Project"}
-          </button>
-        </MoveUpContainer>
-      </section>
-
-      {/* Contact Information */}
-      <section
-        className="contact-info w-full max-w-[1200px] mx-auto px-4 lg:px-8 py-16"
-        aria-labelledby="contact-heading"
-      >
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-          {/* Direct Contact */}
-          <MoveUpContainer>
-            <div className="space-y-8">
-              <h2
-                id="contact-heading"
-                className="text-[2rem] lg:text-[2.5rem] font-bold mb-8"
-              >
+        <div className="contact-container w-full flex flex-col justify-center items-center text-start my-7 lg:my-12 max-w-[550px] lg:max-w-[1200px] m-auto p-3 lg:p-5 z-[99]">
+          <div className="w-full mb-5 lg:mb-10">
+            <MoveUpContainer>
+              <h2 className="text-[2rem] lg:text-[3rem] font-bold font-(family-name:--font-geist) mb-2 lg:mb-5">
                 {language === "ES"
-                  ? "Información de Contacto"
-                  : "Contact Information"}
+                  ? "Creemos experiencias inolvidables juntos"
+                  : "Let's create unforgettable experiences together"}
               </h2>
+            </MoveUpContainer>
 
-              <div className="space-y-6" role="list">
-                {/* Phone */}
-                <div
-                  onClick={() => handleContactClick("phone", contactInfo.phone)}
-                  onKeyDown={(e) =>
-                    handleKeyDown(e, "phone", contactInfo.phone)
-                  }
-                  role="listitem"
-                  tabIndex={0}
-                  aria-label={`${language === "ES" ? "Llamar al" : "Call"} ${
-                    contactInfo.phone
-                  }`}
-                  className="contact-item group cursor-pointer p-6 bg-[rgba(255,255,255,0.05)] rounded-lg border border-[rgba(255,255,255,0.1)] hover:bg-[rgba(255,255,255,0.1)] focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-sky-950 transition-all duration-300"
-                >
-                  <div className="flex items-center space-x-4">
-                    <div
-                      className="w-12 h-12 bg-yellow-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
-                      aria-hidden="true"
-                    >
-                      <span className="material-symbols-rounded text-sky-950 text-xl">
-                        phone
+            {/* Links */}
+            <div className="w-full lg:text-xl font-light leading-relaxed text-start flex flex-col justify-between items-start mt-10 gap-8">
+              <div className="w-full relative">
+                <MoveUpContainer>
+                  <div className="w-full border-b-1 border-gray-200/55 pb-3">
+                    <div className="w-full font-(family-name:--font-inter) flex justify-between items-end gap-2">
+                      <span className="text-[1.1rem] lg:text-[1.4rem] font-semibold">
+                        Email
                       </span>
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-400 font-light">
-                        {language === "ES" ? "Teléfono" : "Phone"}
-                      </p>
-                      <p className="text-lg font-semibold group-hover:text-yellow-500 transition-colors duration-300">
-                        {contactInfo.phone}
-                      </p>
+                      <Link
+                        target="_blank"
+                        href="mailto:comercialdonosofilms@gmail.com"
+                      >
+                        <span className="text-orange-500 cursor-pointer">
+                          {contactInfo.email}
+                        </span>
+                      </Link>
                     </div>
                   </div>
-                </div>
+                </MoveUpContainer>
+              </div>
 
-                {/* Email */}
-                <div
-                  onClick={() => handleContactClick("email", contactInfo.email)}
-                  onKeyDown={(e) =>
-                    handleKeyDown(e, "email", contactInfo.email)
-                  }
-                  role="listitem"
-                  tabIndex={0}
-                  aria-label={`${
-                    language === "ES" ? "Enviar email a" : "Send email to"
-                  } ${contactInfo.email}`}
-                  className="contact-item group cursor-pointer p-6 bg-[rgba(255,255,255,0.05)] rounded-lg border border-[rgba(255,255,255,0.1)] hover:bg-[rgba(255,255,255,0.1)] focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-sky-950 transition-all duration-300"
-                >
-                  <div className="flex items-center space-x-4">
-                    <div
-                      className="w-12 h-12 bg-yellow-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
-                      aria-hidden="true"
-                    >
-                      <span className="material-symbols-rounded text-sky-950 text-xl">
-                        mail
+              <div className="w-full relative">
+                <MoveUpContainer>
+                  <div className="w-full border-b-1 border-gray-200/55 pb-3">
+                    <div className="w-full font-(family-name:--font-inter) flex justify-between items-end gap-2">
+                      <span className="text-[1.1rem] lg:text-[1.4rem] font-semibold">
+                        {language === "ES" ? "Teléfono" : "Phone "}
                       </span>
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-400 font-light">
-                        {language === "ES" ? "Email" : "Email"}
-                      </p>
-                      <p className="text-lg font-semibold group-hover:text-yellow-500 transition-colors duration-300">
-                        {contactInfo.email}
-                      </p>
+                      <Link target="_blank" href="https://wa.me/573001234567">
+                        <span className="text-orange-500 cursor-pointer">
+                          {contactInfo.phone}
+                        </span>
+                      </Link>
                     </div>
                   </div>
-                </div>
+                </MoveUpContainer>
+              </div>
 
-                {/* Location */}
-                <div
-                  className="contact-item p-6 bg-[rgba(255,255,255,0.05)] rounded-lg border border-[rgba(255,255,255,0.1)]"
-                  role="listitem"
-                >
-                  <div className="flex items-center space-x-4">
-                    <div
-                      className="w-12 h-12 bg-yellow-500 rounded-lg flex items-center justify-center"
-                      aria-hidden="true"
-                    >
-                      <span className="material-symbols-rounded text-sky-950 text-xl">
-                        location_on
+              <div className="w-full relative">
+                <MoveUpContainer>
+                  <div className="w-full border-b-1 border-gray-200/55 pb-3">
+                    <div className="w-full font-(family-name:--font-inter) flex justify-between items-end gap-2">
+                      <span className="text-[1.1rem] lg:text-[1.4rem] font-semibold">
+                        Socials
                       </span>
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-400 font-light">
-                        {language === "ES" ? "Ubicación" : "Location"}
-                      </p>
-                      <p className="text-lg font-semibold">
-                        {contactInfo.location}
-                      </p>
+                      <div className="flex flex-col lg:flex-row gap-4 text-orange-500">
+                        <Link
+                          href={contactInfo.socials.instagram}
+                          target="_blank"
+                          className="cursor-pointer"
+                        >
+                          Instagram
+                        </Link>
+                        <Link
+                          href={contactInfo.socials.linkedin}
+                          target="_blank"
+                          className="cursor-pointer"
+                        >
+                          Youtube
+                        </Link>
+                        <Link
+                          href={contactInfo.socials.behance}
+                          target="_blank"
+                          className="cursor-pointer"
+                        >
+                          Behance
+                        </Link>
+                        <Link
+                          href={contactInfo.socials.vimeo}
+                          target="_blank"
+                          className="cursor-pointer"
+                        >
+                          Vimeo
+                        </Link>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </MoveUpContainer>
+              </div>
+
+              <div className="w-full">
+                <MoveUpContainer>
+                  <div className="w-full font-(family-name:--font-inter) flex justify-between items-end gap-2">
+                    <span className="text-[1rem] lg:text-[1.2rem] font-extralight">
+                      {language === "ES"
+                        ? "Bogotá / Colombia"
+                        : "Bogota / Colombia"}
+                    </span>
+                  </div>
+                </MoveUpContainer>
               </div>
             </div>
-          </MoveUpContainer>
-
-          {/* Social Media */}
-          <MoveUpContainer>
-            <div className="space-y-8">
-              <h2 className="text-[2rem] lg:text-[2.5rem] font-bold mb-8">
-                {language === "ES" ? "Redes Sociales" : "Social Media"}
-              </h2>
-
-              <div className="space-y-6" role="list">
-                {/* Instagram */}
-                <div
-                  onClick={() =>
-                    handleContactClick("social", contactInfo.socials.instagram)
-                  }
-                  onKeyDown={(e) =>
-                    handleKeyDown(e, "social", contactInfo.socials.instagram)
-                  }
-                  role="listitem"
-                  tabIndex={0}
-                  aria-label={`${
-                    language === "ES"
-                      ? "Visitar perfil de Instagram"
-                      : "Visit Instagram profile"
-                  }`}
-                  className="contact-item group cursor-pointer p-6 bg-[rgba(255,255,255,0.05)] rounded-lg border border-[rgba(255,255,255,0.1)] hover:bg-[rgba(255,255,255,0.1)] focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-sky-950 transition-all duration-300"
-                >
-                  <div className="flex items-center space-x-4">
-                    <div
-                      className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
-                      aria-hidden="true"
-                    >
-                      <span className="material-symbols-rounded text-white text-xl">
-                        photo_camera
-                      </span>
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-400 font-light">
-                        Instagram
-                      </p>
-                      <p className="text-lg font-semibold group-hover:text-yellow-500 transition-colors duration-300">
-                        @davidtuta
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* LinkedIn */}
-                <div
-                  onClick={() =>
-                    handleContactClick("social", contactInfo.socials.linkedin)
-                  }
-                  onKeyDown={(e) =>
-                    handleKeyDown(e, "social", contactInfo.socials.linkedin)
-                  }
-                  role="listitem"
-                  tabIndex={0}
-                  aria-label={`${
-                    language === "ES"
-                      ? "Visitar perfil de LinkedIn"
-                      : "Visit LinkedIn profile"
-                  }`}
-                  className="contact-item group cursor-pointer p-6 bg-[rgba(255,255,255,0.05)] rounded-lg border border-[rgba(255,255,255,0.1)] hover:bg-[rgba(255,255,255,0.1)] focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-sky-950 transition-all duration-300"
-                >
-                  <div className="flex items-center space-x-4">
-                    <div
-                      className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
-                      aria-hidden="true"
-                    >
-                      <span className="material-symbols-rounded text-white text-xl">
-                        work
-                      </span>
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-400 font-light">
-                        LinkedIn
-                      </p>
-                      <p className="text-lg font-semibold group-hover:text-yellow-500 transition-colors duration-300">
-                        David Tuta
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Behance */}
-                <div
-                  onClick={() =>
-                    handleContactClick("social", contactInfo.socials.behance)
-                  }
-                  onKeyDown={(e) =>
-                    handleKeyDown(e, "social", contactInfo.socials.behance)
-                  }
-                  role="listitem"
-                  tabIndex={0}
-                  aria-label={`${
-                    language === "ES"
-                      ? "Visitar perfil de Behance"
-                      : "Visit Behance profile"
-                  }`}
-                  className="contact-item group cursor-pointer p-6 bg-[rgba(255,255,255,0.05)] rounded-lg border border-[rgba(255,255,255,0.1)] hover:bg-[rgba(255,255,255,0.1)] focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-sky-950 transition-all duration-300"
-                >
-                  <div className="flex items-center space-x-4">
-                    <div
-                      className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
-                      aria-hidden="true"
-                    >
-                      <span className="material-symbols-rounded text-white text-xl">
-                        design_services
-                      </span>
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-400 font-light">
-                        Behance
-                      </p>
-                      <p className="text-lg font-semibold group-hover:text-yellow-500 transition-colors duration-300">
-                        davidtuta
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Vimeo */}
-                <div
-                  onClick={() =>
-                    handleContactClick("social", contactInfo.socials.vimeo)
-                  }
-                  onKeyDown={(e) =>
-                    handleKeyDown(e, "social", contactInfo.socials.vimeo)
-                  }
-                  role="listitem"
-                  tabIndex={0}
-                  aria-label={`${
-                    language === "ES"
-                      ? "Visitar perfil de Vimeo"
-                      : "Visit Vimeo profile"
-                  }`}
-                  className="contact-item group cursor-pointer p-6 bg-[rgba(255,255,255,0.05)] rounded-lg border border-[rgba(255,255,255,0.1)] hover:bg-[rgba(255,255,255,0.1)] focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-sky-950 transition-all duration-300"
-                >
-                  <div className="flex items-center space-x-4">
-                    <div
-                      className="w-12 h-12 bg-blue-400 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
-                      aria-hidden="true"
-                    >
-                      <span className="material-symbols-rounded text-white text-xl">
-                        play_circle
-                      </span>
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-400 font-light">Vimeo</p>
-                      <p className="text-lg font-semibold group-hover:text-yellow-500 transition-colors duration-300">
-                        davidtuta
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </MoveUpContainer>
-        </div>
-      </section>
-
-      {/* Call to Action Bottom */}
-      <section className="contact-cta w-full text-center py-16 lg:py-20">
-        <MoveUpContainer>
-          <div className="max-w-[800px] mx-auto px-4">
-            <h3 className="text-[2rem] lg:text-[3rem] font-bold mb-6">
-              {language === "ES"
-                ? "¿Tienes un proyecto en mente?"
-                : "Have a project in mind?"}
-            </h3>
-            <p className="text-[1.1rem] lg:text-[1.3rem] font-light mb-8 text-gray-300">
-              {language === "ES"
-                ? "No dudes en contactarme. Estoy aquí para ayudarte a hacer realidad tu visión creativa."
-                : "Don't hesitate to reach out. I'm here to help you bring your creative vision to life."}
-            </p>
-            <button
-              onClick={() => handleContactClick("email", contactInfo.email)}
-              aria-label={
-                language === "ES"
-                  ? "Enviar mensaje por email"
-                  : "Send message via email"
-              }
-              className="bg-transparent border-2 border-yellow-500 text-yellow-500 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-yellow-500 hover:text-sky-950 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-sky-950 transition-all duration-300 transform hover:scale-105"
-            >
-              {language === "ES" ? "Enviar Mensaje" : "Send Message"}
-            </button>
           </div>
-        </MoveUpContainer>
+        </div>
       </section>
     </SectionContainer>
   );

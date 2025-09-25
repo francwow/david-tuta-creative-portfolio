@@ -15,12 +15,14 @@ body {
   --font-geist-mono: var(--geist-mono);
   --color-blue: rgb(29, 155, 240);
   --color-sky: rgb(5, 47, 74);
+  --color-deep-green: rgb(1, 19, 17);
   --color-deep-blue: rgba(3, 20, 33);
+  --color-orange: rgb(255, 105, 0);
   --header-height: calc(var(--header-h) * 1px);
   --footer-height: calc(var(--footer-h) * 1px);
   --font-body: var(--font-inter), var(--font-oswald), var(--font-antonio);
 
-  background-color: rgba(29, 29, 27);
+  background-color: var(--color-deep-green);
   color: rgba(29, 29, 27);
   min-height: 100vh;
   font-family: var(--font-body);
@@ -87,7 +89,10 @@ nextjs-portal {
   padding-bottom: var(--footer-height);
 }
 
-/* utility */
+/* .contact-section {
+  height: 100vh;
+} */
+
 .move-up {
   position: relative;
   overflow: hidden;
@@ -113,6 +118,28 @@ nextjs-portal {
   transition: 0.5s ease background-color;
 }
 
+.page-transition {
+  z-index: 999;
+  background-color: rgba(3, 20, 33, 1);
+  animation: page-transition forwards 1s ease;
+}
+
+@keyframes page-transition {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
 @media screen and (min-width: 991px) {
   .rotate-item {
     transition: 0.5s ease;
@@ -128,6 +155,16 @@ nextjs-portal {
 
   .rotate-parent:hover .rotate-item:nth-child(2) {
     transform: translate3d(0, 0, 0);
+  }
+}
+
+.cta-container svg {
+  transition: 0.3s ease translate;
+}
+
+@media screen and (min-width: 991px) {
+  .cta-container:hover svg {
+    translate: 5px 0;
   }
 }
 
@@ -235,6 +272,10 @@ nextjs-portal {
   animation-delay: 0.5s;
 }
 
+.hero-img.pages-img {
+  visibility: hidden;
+}
+
 .hero-img.pages-img .color-overlay {
   background-color: var(--color-deep-blue);
 }
@@ -252,4 +293,14 @@ nextjs-portal {
 
 .skills span {
   display: block;
+}
+
+/* Work */
+.work-section .main-container {
+  height: calc(100vh - calc(var(--header-height) + var(--footer-height)));
+}
+
+.project-item-intro .move-up {
+  width: 100%;
+  height: 100%;
 }

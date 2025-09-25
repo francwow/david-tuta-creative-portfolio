@@ -1,0 +1,20 @@
+.menu-btn {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  color: white;
+  text-align: center;
+  font-size: 1rem;
+  z-index: 999;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.menu-btn svg {
+  transform: rotate(180deg);
+  width: 20px;
+  height: 20px;
+}

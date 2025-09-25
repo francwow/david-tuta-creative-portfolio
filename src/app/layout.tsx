@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Antonio, Geist, Geist_Mono, Inter, Oswald } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
+import "lenis/dist/lenis.css";
 import Provider from "./_components/Provider";
-import HomeImg from "./_components/home/HomeImg";
 import HeroImg from "./_components/home/HeroImg";
 import Header from "./_components/header/Header";
 import Footer from "./_components/footer/Footer";
@@ -77,13 +77,6 @@ export default function RootLayout({
           >
             Skip to main content
           </a>
-
-          <div className="block lg:hidden absolute inset-0">
-            <HomeImg device="mobile" />
-          </div>
-          <div className="hidden lg:block absolute inset-0">
-            <HomeImg device="desktop" />
-          </div>
           <HeroImg />
           <div id="main-content">{children}</div>
           <Header />

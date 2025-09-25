@@ -16,7 +16,6 @@ const Footer = () => {
       const footerHeight = footerRect?.height;
 
       document.body.style.setProperty("--footer-h", `${footerHeight}`);
-      console.log(footerHeight);
     }
   }, []);
 

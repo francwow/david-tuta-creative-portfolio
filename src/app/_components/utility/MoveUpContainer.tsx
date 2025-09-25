@@ -6,6 +6,7 @@ import { useInView } from "react-intersection-observer";
 const MoveUpContainer = ({ children }: PropsWithChildren) => {
   const { inView: containerInView, ref: containerRef } = useInView({
     threshold: 0.7,
+    triggerOnce: true,
   });
 
   return (

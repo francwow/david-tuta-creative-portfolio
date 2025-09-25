@@ -4,14 +4,26 @@ import { useLanguage } from "@/contexts/ContextHooks";
 import MoveUpContainer from "../_components/utility/MoveUpContainer";
 import SectionContainer from "../_components/utility/SectionContainer";
 import Image from "next/image";
-import aboutImg from "@/assets/images/tut-desktop-webp.webp";
-import aboutImgMobile from "@/assets/images/tut-mobile-webp.webp";
+
+// Images
+import aboutImg from "@/assets/images/about/tut-desktop-webp.webp";
+import aboutImgMobile from "@/assets/images/about/tut-mobile-webp.webp";
+import aboutVideo from "@/assets/images/about/video.jpg";
+import aboutPhotography from "@/assets/images/about/photography.jpg";
+import aboutDesign from "@/assets/images/about/design.jpg";
+import about3DAnimation from "@/assets/images/about/3d.jpg";
+import CTA from "../_components/utility/CTA";
+import { useLenis } from "@/hooks/useLenis";
 
 const AboutPage = () => {
   const { language } = useLanguage();
 
+  // Initialize Lenis for smooth scrolling
+  useLenis();
+
   const skills = [
     {
+      image: aboutVideo,
       textEN: "Production",
       textES: "Producción",
       icon: (
@@ -39,6 +51,7 @@ const AboutPage = () => {
         "Creando historias a través del lente, desde la idea hasta la edición final. Ya sea un comercial, un cortometraje o contenido para redes sociales, cada toma está pensada para cautivar.",
     },
     {
+      image: aboutPhotography,
       textEN: "Photography",
       textES: "Fotografía",
       icon: (
@@ -64,6 +77,7 @@ const AboutPage = () => {
         "Capturando emociones, luz y composición en una sola toma. Desde retratos hasta sesiones de producto, cada imagen cuenta una historia única.",
     },
     {
+      image: aboutDesign,
       textEN: "Design",
       textES: "Diseño",
       icon: (
@@ -90,6 +104,7 @@ const AboutPage = () => {
         "Transformando ideas en impacto visual. Marcas, diseños y experiencias digitales llevadas a la vida con creatividad audaz y atención al detalle.",
     },
     {
+      image: about3DAnimation,
       textEN: "3D Animation",
       textES: "Animación 3D",
       icon: (
@@ -144,7 +159,7 @@ const AboutPage = () => {
         </div>
 
         {/* About me */}
-        <div className="about-description flex flex-col lg:flex-row justify-center items-cente gap-6 max-w-[450px] lg:max-w-[1200px] m-auto my-7 lg:my-0 lg:mb-12">
+        <div className="about-description flex flex-col lg:flex-row justify-center items-cente gap-6 max-w-[550px] lg:max-w-[1200px] m-auto my-7 lg:my-0 lg:mb-12">
           <div className="basis-[50%] lg:p-5">
             <Image
               className="hidden lg:block"
@@ -164,7 +179,7 @@ const AboutPage = () => {
               </h2>
             </MoveUpContainer>
             <MoveUpContainer>
-              <p className="lg:text-2xl font-light leading-relaxed">
+              <p className="lg:text-xl font-light leading-relaxed">
                 {language === "ES"
                   ? "Soy un filmmaker apasionado por transformar ideas en narrativas visuales impactantes. Mi experiencia abarca desde la concepción inicial hasta la postproducción, incluyendo la creación de efectos 3D y fotografía."
                   : "I am a filmmaker passionate about transforming ideas into impactful visual narratives. My experience ranges from initial conception to post-production, including the creation of 3D effects and photography."}
@@ -172,7 +187,7 @@ const AboutPage = () => {
             </MoveUpContainer>
 
             <MoveUpContainer>
-              <p className="lg:text-2xl font-light leading-relaxed">
+              <p className="lg:text-xl font-light leading-relaxed">
                 {language === "ES"
                   ? "Me especializo en la producción de videos para redes sociales y comunicación corporativa, tanto interna como externa."
                   : "I specialize in producing videos for social media and corporate communication, both internal and external."}
@@ -180,7 +195,7 @@ const AboutPage = () => {
             </MoveUpContainer>
 
             <MoveUpContainer>
-              <p className="lg:text-2xl font-light leading-relaxed">
+              <p className="lg:text-xl font-light leading-relaxed">
                 {language === "ES"
                   ? "Cada proyecto es una oportunidad para crear contenido que inspire conecte y marque la diferencia."
                   : "Each project is an opportunity to create content that inspires, connects and makes a difference."}
@@ -190,7 +205,7 @@ const AboutPage = () => {
         </div>
 
         {/* Skills */}
-        <div className="about-skills w-full flex flex-col justify-center items-center text-start my-7 lg:my-12 lg:max-w-[1200px] m-auto p-3 lg:p-5">
+        <div className="about-skills w-full flex flex-col justify-center items-center text-start my-7 lg:my-12 max-w-[550px] lg:max-w-[1200px] m-auto p-3 lg:p-5">
           <div className="w-full mb-5 lg:mb-10">
             <MoveUpContainer>
               <h2 className="text-[2rem] lg:text-[3rem] font-bold font-(family-name:--font-geist)">
@@ -200,25 +215,35 @@ const AboutPage = () => {
           </div>
 
           <div className="w-full">
-            <ul className="skills w-full grid grid-cols-1 lg:grid-cols-2 lg:text-2xl font-light leading-relaxed gap-10 lg:gap-20 items-start">
+            <ul className="skills w-full grid grid-cols-1 lg:grid-cols-2 lg:text-xl font-light leading-relaxed gap-10 lg:gap-20 items-start">
               {skills.map((skill, index) => (
                 <li
                   key={index}
-                  className="flex flex-col justify-center items-start gap-2"
+                  className="flex flex-col justify-between items-start gap-2 bg-[rgb(4,22,24)] rounded p-3 lg:p-5 w-full h-full relative overflow-hidden"
                 >
-                  <MoveUpContainer>
-                    <div className="flex flex-row justify-start items-center gap-2">
-                      <span className="text-orange-500">{skill.icon}</span>
+                  <div className="w-full h-full absolute inset-0">
+                    <div className="overlay w-full h-full absolute inset-0 bg-gradient-to-t from-black/80 from-30% to-black/30 to-100%"></div>
+                    <Image
+                      src={skill.image}
+                      alt={skill.textEN}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="w-full h-full">
+                    <MoveUpContainer>
+                      <div className="flex flex-row justify-start items-center gap-2">
+                        <span className="text-orange-500">{skill.icon}</span>
 
-                      <span className="font-semibold">
-                        {language === "ES" ? skill.textES : skill.textEN}
-                      </span>
-                    </div>
+                        <h3 className="font-semibold text-[1.3rem] lg:text-[1.7rem] text-gray-200">
+                          {language === "ES" ? skill.textES : skill.textEN}
+                        </h3>
+                      </div>
 
-                    <div className="text-left">
-                      {language === "ES" ? skill.descES : skill.descEN}
-                    </div>
-                  </MoveUpContainer>
+                      <div className="text-left text-gray-200 mt-2 leading-normal">
+                        {language === "ES" ? skill.descES : skill.descEN}
+                      </div>
+                    </MoveUpContainer>
+                  </div>
                 </li>
               ))}
             </ul>
@@ -226,14 +251,158 @@ const AboutPage = () => {
         </div>
 
         {/* Experience */}
-        <div className="about-experience w-full flex flex-col justify-center items-center text-start my-7 lg:my-12 lg:max-w-[1200px] m-auto p-3 lg:p-5">
+        <div className="about-experience w-full flex flex-col justify-center items-center text-start my-7 lg:my-12 max-w-[550px] lg:max-w-[1200px] m-auto p-3 lg:p-5">
           <div className="w-full mb-5 lg:mb-10">
             <MoveUpContainer>
-              <h2 className="text-[2rem] lg:text-[3rem] font-bold font-(family-name:--font-geist)">
+              <h2 className="text-[2rem] lg:text-[3rem] font-bold font-(family-name:--font-geist) mb-2 lg:mb-5">
                 {language === "ES" ? "Experiencia" : "Experience"}
               </h2>
             </MoveUpContainer>
+            <div className="w-full lg:text-xl font-light leading-relaxed text-start">
+              <MoveUpContainer>
+                <div className="">
+                  {language === "ES" ? (
+                    <p>
+                      En los últimos años, he trabajado en una variedad de
+                      disciplinas creativas, construyendo un portafolio diverso
+                      que combina narración visual, pensamiento de diseño y
+                      habilidades técnicas.
+                    </p>
+                  ) : (
+                    <p>
+                      Over the past few years, I&apos;ve worked across a range
+                      of creative disciplines, building a diverse portfolio that
+                      blends visual storytelling, design thinking, and technical
+                      skill.
+                    </p>
+                  )}
+                </div>
+              </MoveUpContainer>
+              <br />
+              <MoveUpContainer>
+                <div className="">
+                  {language === "ES" ? (
+                    <p>
+                      <b className="text-orange-500">
+                        En la producción de videos&nbsp;
+                      </b>
+                      he dirigido, filmado y editado contenido para proyectos
+                      personales y clientes, desarrollando un ojo agudo para el
+                      ritmo, el estado de ánimo y el impacto narrativo.
+                    </p>
+                  ) : (
+                    <p>
+                      <b className="text-orange-500">
+                        In video production&nbsp;
+                      </b>
+                      I&apos;ve directed, filmed, and edited content for
+                      personal projects and clients alike— developing a sharp
+                      eye for pacing, mood, and narrative impact.
+                    </p>
+                  )}
+                </div>
+              </MoveUpContainer>
+              <br />
+              <MoveUpContainer>
+                <div className="">
+                  {language === "ES" ? (
+                    <p>
+                      <b className="text-orange-500">
+                        A través de la fotografía&nbsp;
+                      </b>
+                      he explorado todo, desde retratos hasta cobertura de
+                      eventos, siempre buscando el cuadro perfecto que capture
+                      tanto el sentimiento como la forma.
+                    </p>
+                  ) : (
+                    <p>
+                      <b className="text-orange-500">
+                        Through photography&nbsp;
+                      </b>
+                      I&apos;ve explored everything from portraits to event
+                      coverage, always seeking the perfect frame that captures
+                      both feeling and form.
+                    </p>
+                  )}
+                </div>
+              </MoveUpContainer>
+              <br />
+              <MoveUpContainer>
+                <div className="">
+                  {language === "ES" ? (
+                    <p>
+                      <b className="text-orange-500">
+                        Mi viaje en el diseño&nbsp;
+                      </b>
+                      ha incluido trabajo de identidad de marca, diseños
+                      editoriales e interfaces digitales, cada pieza creada con
+                      un sentido intuitivo de equilibrio, estilo y propósito.
+                    </p>
+                  ) : (
+                    <p>
+                      <b className="text-orange-500">
+                        My journey in design&nbsp;
+                      </b>
+                      has included brand identity work, editorial layouts, and
+                      digital interfaces—each piece created with an intuitive
+                      sense of balance, style, and purpose.
+                    </p>
+                  )}
+                </div>
+              </MoveUpContainer>
+              <br />
+              <MoveUpContainer>
+                <div className="">
+                  {language === "ES" ? (
+                    <p>
+                      <b className="text-orange-500">
+                        En la animación 3D&nbsp;
+                      </b>
+                      he traído ideas a la vida a través de modelado, rigging 3D
+                      y movimiento. Desde visuales abstractos hasta historias
+                      guiadas por personajes, he experimentado con forma y
+                      movimiento para crear experiencias visuales únicas.
+                    </p>
+                  ) : (
+                    <p>
+                      <b className="text-orange-500">In 3D animation&nbsp;</b>
+                      I&apos;ve brought ideas to life through modeling, rigging,
+                      and motion. From abstract visuals to character-driven
+                      stories, I&apos;ve experimented with form and movement to
+                      craft unique visual experiences.
+                    </p>
+                  )}
+                </div>
+              </MoveUpContainer>
+              <br />
+              <MoveUpContainer>
+                <div className="">
+                  {language === "ES" ? (
+                    <p>
+                      Cada proyecto ha sido una lección en{" "}
+                      <b className="text-orange-500">
+                        adaptabilidad, colaboración y creatividad
+                      </b>
+                      . Siempre estoy listo para el siguiente desafío.
+                    </p>
+                  ) : (
+                    <p>
+                      Each project has been a lesson in{" "}
+                      <b className="text-orange-500">
+                        adaptability, collaboration, and creativity
+                      </b>
+                      . I&apos;m always ready for the next challenge.
+                    </p>
+                  )}
+                </div>
+              </MoveUpContainer>
+            </div>
           </div>
+        </div>
+
+        {/* Contact */}
+        <div className="w-full flex flex-col justify-center items-center text-start my-7 lg:my-12 max-w-[550px] lg:max-w-[1200px] m-auto p-3 lg:p-5">
+          <CTA textEN="Let's work together" textES="Trabajemos juntos" />
         </div>
       </section>
     </SectionContainer>

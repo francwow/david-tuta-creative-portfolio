@@ -22,7 +22,7 @@ const Provider = (props: PropsWithChildren) => {
 
   useEffect(() => {
     console.log(
-      "%c Developed by Francisco Osorio Silva - https://francwow.com/",
+      "%c Developed by - https://francwow.com/",
       "background: #000; color: #fff;"
     );
   }, []);

@@ -15,16 +15,10 @@ const HomeMenu = ({ setNavActive }: HomeMenuProps) => {
       position: "top-[4vw] left-[4vw]",
     },
     {
-      textES: "FOTOGRAFÍA",
-      textEN: "PHOTOGRAPHY",
-      href: "/photography",
+      textES: "TRABAJO",
+      textEN: "WORK",
+      href: "/work",
       position: "top-[4vw] right-[4vw]",
-    },
-    {
-      textES: "DISEÑO",
-      textEN: "DESIGN",
-      href: "/design",
-      position: "bottom-[4vw] left-[4vw]",
     },
     {
       textES: "CONTACTO",
