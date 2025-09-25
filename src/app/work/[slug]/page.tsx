@@ -108,7 +108,7 @@ const ProductionPage = ({ params }: { params: Promise<{ slug: string }> }) => {
                           loading="lazy"
                           placeholder="blur"
                           blurDataURL={workItem.mainImg}
-                          className="absolute inset-0 w-full h-full object-cover blur-xl"
+                          className="absolute inset-0 w-full h-full object-cover backdrop-blur-2xl"
                         />
                       </MoveUpContainer>
                     </div>
